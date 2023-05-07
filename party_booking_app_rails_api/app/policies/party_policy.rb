@@ -1,0 +1,2 @@
+class PartyPolicy < ApplicationPolicy
+end

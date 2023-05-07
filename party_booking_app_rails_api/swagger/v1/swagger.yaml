@@ -1,0 +1,1351 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/admins_passwords":
+    post:
+      summary: change password
+      tags:
+      - Change password
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '200':
+          description: Cannot update password
+          content:
+            application/json:
+              example:
+                success: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_password:
+                  type: string
+                  example: B5LCHbY7N6C9+egEfg==
+                old_password:
+                  type: string
+                  example: B5LCHbY7N6C9+egEfg==
+  "/api/admins_reset_password_requests":
+    post:
+      summary: Reset password request
+      tags:
+      - Reset password request
+      parameters: []
+      responses:
+        '204':
+          description: request sent
+          content:
+            application/json:
+              example: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: admin@jitera.com
+  "/api/admins_verify_confirmation_token":
+    post:
+      summary: Verify confirmation token
+      tags:
+      - Verify confirmation token
+      parameters: []
+      responses:
+        '200':
+          description: request sent
+          content:
+            application/json:
+              example:
+                success: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirmation_token:
+                  type: string
+                  example: 6xbeyWz7yfaFhXLpZw==
+  "/api/admins_verify_reset_password_requests":
+    post:
+      summary: Verify reset password request
+      tags:
+      - Verify reset password request
+      parameters: []
+      responses:
+        '200':
+          description: request sent
+          content:
+            application/json:
+              example:
+                success: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reset_token:
+                  type: string
+                  example: dummy_reset_token
+                password:
+                  type: string
+                  example: EhCe/kYwIUu4+z3Teg==
+                password_confirmation:
+                  type: string
+                  example: oUcSvDXuqpHpoYEq+A==
+  "/api/users_passwords":
+    post:
+      summary: change password
+      tags:
+      - Change password
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '200':
+          description: Cannot update password
+          content:
+            application/json:
+              example:
+                success: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_password:
+                  type: string
+                  example: B5LCHbY7N6C9+egEfg==
+                old_password:
+                  type: string
+                  example: B5LCHbY7N6C9+egEfg==
+  "/api/users_reset_password_requests":
+    post:
+      summary: Reset password request
+      tags:
+      - Reset password request
+      parameters: []
+      responses:
+        '204':
+          description: request sent
+          content:
+            application/json:
+              example: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@jitera.com
+  "/api/users_verify_confirmation_token":
+    post:
+      summary: Verify confirmation token
+      tags:
+      - Verify confirmation token
+      parameters: []
+      responses:
+        '200':
+          description: request sent
+          content:
+            application/json:
+              example:
+                success: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirmation_token:
+                  type: string
+                  example: CScwlkao8794rWzFvA==
+  "/api/users_verify_reset_password_requests":
+    post:
+      summary: Verify reset password request
+      tags:
+      - Verify reset password request
+      parameters: []
+      responses:
+        '200':
+          description: request sent
+          content:
+            application/json:
+              example:
+                success: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reset_token:
+                  type: string
+                  example: dummy_reset_token
+                password:
+                  type: string
+                  example: 61AKUlu12q5tuQ4Kvw==
+                password_confirmation:
+                  type: string
+                  example: "/AjmEOIGhfJLKf9dNA=="
+  "/api/admins_registrations":
+    post:
+      summary: Create admins
+      tags:
+      - authentication
+      parameters: []
+      responses:
+        '200':
+          description: auth_registration
+          content:
+            application/json:
+              example:
+                id: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                      example: string
+                    password_confirmation:
+                      type: string
+                      example: string
+                    name:
+                      type: string
+                      example: string
+                    email:
+                      type: string
+                      example: string
+  "/api/admins/{id}":
+    delete:
+      summary: Destroy admins
+      tags:
+      - admins
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: delete
+          content:
+            application/json:
+              example:
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admins:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: string
+    put:
+      summary: Update admins
+      tags:
+      - admins
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: update
+          content:
+            application/json:
+              example:
+                admin:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  parties:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                    admin_id: foreign_key
+                  name: string
+                  email: string
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admins:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    email:
+                      type: string
+                      example: string
+    get:
+      summary: Show admins
+      tags:
+      - admins
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: show
+          content:
+            application/json:
+              example:
+                admin:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  parties:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                    admin_id: foreign_key
+                  name: string
+                  email: string
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admins:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: string
+  "//api/admins":
+    post:
+      summary: Create admins
+      tags:
+      - admins
+      parameters: []
+      responses:
+        '200':
+          description: create
+          content:
+            application/json:
+              example:
+                admin:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  parties:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                    admin_id: foreign_key
+                  name: string
+                  email: string
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admins:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    email:
+                      type: string
+                      example: string
+  "/api/admins":
+    get:
+      summary: List admins
+      tags:
+      - admins
+      parameters:
+      - name: params
+        in: query
+        schema:
+          type: object
+          properties:
+            pagination_page:
+              type: pagination_page
+              example: pagination_page
+            pagination_limit:
+              type: pagination_limit
+              example: pagination_limit
+            admins:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: string
+                email:
+                  type: string
+                  example: string
+      responses:
+        '200':
+          description: index
+          content:
+            application/json:
+              example:
+                total_pages: integer
+                admins:
+                - id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  parties:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                    admin_id: foreign_key
+                  name: string
+                  email: string
+                message: {}
+  "/oauth/revoke":
+    post:
+      summary: Token revoke API generated by module &#39;Email login&#39;
+      tags:
+      - token_revoke
+      parameters: []
+      responses:
+        '403':
+          description: token_revoke
+          content:
+            application/json:
+              example: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: string
+  "/oauth/token":
+    post:
+      summary: Token creation API generated by module &#39;Email login&#39;
+      tags:
+      - token_creation
+      parameters: []
+      responses:
+        '401':
+          description: token_creation
+          content:
+            application/json:
+              example:
+                error: string
+                error_description: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  example: string
+                client_id:
+                  type: string
+                  example: string
+                client_secret:
+                  type: string
+                  example: string
+                scope:
+                  type: string
+                  example: string
+                email:
+                  type: string
+                  example: string
+                password:
+                  type: string
+                  example: string
+  "/api/parties/{id}":
+    delete:
+      summary: Destroy parties
+      tags:
+      - parties
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: delete
+          content:
+            application/json:
+              example:
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parties:
+                  type: object
+                  properties:
+                    partylocation:
+                      type: text
+                      example: text
+    put:
+      summary: Update parties
+      tags:
+      - parties
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: update
+          content:
+            application/json:
+              example:
+                party:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  nameparty: text
+                  partystarttime: datetime
+                  partylocation: text
+                  numberofpeople: integer
+                  isstatus: boolean
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                    party_id: foreign_key
+                  admin:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  admin_id: foreign_key
+                  describe: text
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parties:
+                  type: object
+                  properties:
+                    nameparty:
+                      type: string
+                      example: string
+                    partystarttime:
+                      type: datetime
+                      example: datetime
+                    partylocation:
+                      type: text
+                      example: text
+                    numberofpeople:
+                      type: integer
+                      example: integer
+                    isstatus:
+                      type: enum_type
+                      example: enum_type
+                    admin_id:
+                      type: foreign_key
+                      example: foreign_key
+                    describe:
+                      type: text
+                      example: text
+    get:
+      summary: Show parties
+      tags:
+      - parties
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: show
+          content:
+            application/json:
+              example:
+                party:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  nameparty: text
+                  partystarttime: datetime
+                  partylocation: text
+                  numberofpeople: integer
+                  isstatus: boolean
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                    party_id: foreign_key
+                  admin:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  admin_id: foreign_key
+                  describe: text
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parties:
+                  type: object
+                  properties:
+                    partylocation:
+                      type: text
+                      example: text
+  "//api/parties":
+    post:
+      summary: Create parties
+      tags:
+      - parties
+      parameters: []
+      responses:
+        '200':
+          description: create
+          content:
+            application/json:
+              example:
+                party:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  nameparty: text
+                  partystarttime: datetime
+                  partylocation: text
+                  numberofpeople: integer
+                  isstatus: boolean
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                    party_id: foreign_key
+                  admin:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  admin_id: foreign_key
+                  describe: text
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parties:
+                  type: object
+                  properties:
+                    nameparty:
+                      type: string
+                      example: string
+                    partystarttime:
+                      type: datetime
+                      example: datetime
+                    partylocation:
+                      type: text
+                      example: text
+                    numberofpeople:
+                      type: integer
+                      example: integer
+                    isstatus:
+                      type: enum_type
+                      example: enum_type
+                    admin_id:
+                      type: foreign_key
+                      example: foreign_key
+                    describe:
+                      type: text
+                      example: text
+  "/api/parties":
+    get:
+      summary: List parties
+      tags:
+      - parties
+      parameters:
+      - name: params
+        in: query
+        schema:
+          type: object
+          properties:
+            pagination_page:
+              type: pagination_page
+              example: pagination_page
+            pagination_limit:
+              type: pagination_limit
+              example: pagination_limit
+            parties:
+              type: object
+              properties:
+                nameparty:
+                  type: string
+                  example: string
+                partystarttime:
+                  type: datetime
+                  example: datetime
+                partylocation:
+                  type: text
+                  example: text
+                numberofpeople:
+                  type: integer
+                  example: integer
+                isstatus:
+                  type: enum_type
+                  example: enum_type
+                admin_id:
+                  type: foreign_key
+                  example: foreign_key
+                describe:
+                  type: text
+                  example: text
+      responses:
+        '200':
+          description: index
+          content:
+            application/json:
+              example:
+                total_pages: integer
+                parties:
+                - id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  nameparty: text
+                  partystarttime: datetime
+                  partylocation: text
+                  numberofpeople: integer
+                  isstatus: boolean
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                    party_id: foreign_key
+                  admin:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  admin_id: foreign_key
+                  describe: text
+                message: {}
+  "/api/partybookings/{id}":
+    delete:
+      summary: Destroy partybookings
+      tags:
+      - partybookings
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: delete
+          content:
+            application/json:
+              example:
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+    put:
+      summary: Update partybookings
+      tags:
+      - partybookings
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: update
+          content:
+            application/json:
+              example:
+                partybooking:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  user:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  user_id: foreign_key
+                  party:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                  party_id: foreign_key
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                partybookings:
+                  type: object
+                  properties:
+                    user_id:
+                      type: foreign_key
+                      example: foreign_key
+                    party_id:
+                      type: foreign_key
+                      example: foreign_key
+    get:
+      summary: Show partybookings
+      tags:
+      - partybookings
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: show
+          content:
+            application/json:
+              example:
+                partybooking:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  user:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  user_id: foreign_key
+                  party:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                  party_id: foreign_key
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+  "//api/partybookings":
+    post:
+      summary: Create partybookings
+      tags:
+      - partybookings
+      parameters: []
+      responses:
+        '200':
+          description: create
+          content:
+            application/json:
+              example:
+                partybooking:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  user:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  user_id: foreign_key
+                  party:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                  party_id: foreign_key
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                partybookings:
+                  type: object
+                  properties:
+                    user_id:
+                      type: foreign_key
+                      example: foreign_key
+                    party_id:
+                      type: foreign_key
+                      example: foreign_key
+  "/api/partybookings":
+    get:
+      summary: List partybookings
+      tags:
+      - partybookings
+      parameters:
+      - name: params
+        in: query
+        schema:
+          type: object
+          properties:
+            pagination_page:
+              type: pagination_page
+              example: pagination_page
+            pagination_limit:
+              type: pagination_limit
+              example: pagination_limit
+            partybookings:
+              type: object
+              properties:
+                user_id:
+                  type: foreign_key
+                  example: foreign_key
+                party_id:
+                  type: foreign_key
+                  example: foreign_key
+      responses:
+        '200':
+          description: index
+          content:
+            application/json:
+              example:
+                total_pages: integer
+                partybookings:
+                - id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  user:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                  user_id: foreign_key
+                  party:
+                    id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    nameparty: string
+                    partystarttime: datetime
+                    partylocation: text
+                    numberofpeople: integer
+                    isstatus: boolean
+                  party_id: foreign_key
+                message: {}
+  "/api/users_registrations":
+    post:
+      summary: Create users
+      tags:
+      - authentication
+      parameters: []
+      responses:
+        '200':
+          description: auth_registration
+          content:
+            application/json:
+              example:
+                id: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    password:
+                      type: text
+                      example: text
+                    password_confirmation:
+                      type: string
+                      example: string
+                    name:
+                      type: string
+                      example: string
+                    username:
+                      type: string
+                      example: string
+                    email:
+                      type: string
+                      example: string
+  "/api/users/{id}":
+    delete:
+      summary: Destroy users
+      tags:
+      - users
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: delete
+          content:
+            application/json:
+              example:
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    username:
+                      type: string
+                      example: string
+                    email:
+                      type: string
+                      example: string
+                    password:
+                      type: text
+                      example: text
+    put:
+      summary: Update users
+      tags:
+      - users
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: update
+          content:
+            application/json:
+              example:
+                user:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                  name: text
+                  isactive: boolean
+                  username: string
+                  password: text
+                  dateofbirth: datetime
+                  email: string
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    isactive:
+                      type: boolean
+                      example: boolean
+                    username:
+                      type: string
+                      example: string
+                    dateofbirth:
+                      type: datetime
+                      example: datetime
+                    email:
+                      type: string
+                      example: string
+                    password:
+                      type: text
+                      example: text
+    get:
+      summary: Show users
+      tags:
+      - users
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: show
+          content:
+            application/json:
+              example:
+                user:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                  name: text
+                  isactive: boolean
+                  username: string
+                  password: text
+                  dateofbirth: datetime
+                  email: string
+                message: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    username:
+                      type: string
+                      example: string
+                    password:
+                      type: text
+                      example: text
+                    email:
+                      type: string
+                      example: string
+  "//api/users":
+    post:
+      summary: Create users
+      tags:
+      - users
+      parameters: []
+      responses:
+        '200':
+          description: create
+          content:
+            application/json:
+              example:
+                user:
+                  id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                  name: text
+                  isactive: boolean
+                  username: string
+                  password: text
+                  dateofbirth: datetime
+                  email: string
+                error_object: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: string
+                    isactive:
+                      type: boolean
+                      example: boolean
+                    username:
+                      type: string
+                      example: string
+                    dateofbirth:
+                      type: datetime
+                      example: datetime
+                    email:
+                      type: string
+                      example: string
+                    password:
+                      type: text
+                      example: text
+  "/api/users":
+    get:
+      summary: List users
+      tags:
+      - users
+      parameters:
+      - name: params
+        in: query
+        schema:
+          type: object
+          properties:
+            pagination_page:
+              type: pagination_page
+              example: pagination_page
+            pagination_limit:
+              type: pagination_limit
+              example: pagination_limit
+            users:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: string
+                isactive:
+                  type: boolean
+                  example: boolean
+                username:
+                  type: string
+                  example: string
+                dateofbirth:
+                  type: datetime
+                  example: datetime
+                email:
+                  type: string
+                  example: string
+                password:
+                  type: text
+                  example: text
+      responses:
+        '200':
+          description: index
+          content:
+            application/json:
+              example:
+                total_pages: integer
+                users:
+                - id: integer
+                  created_at: datetime
+                  updated_at: datetime
+                  partybookings:
+                  - id: integer
+                    created_at: datetime
+                    updated_at: datetime
+                    user_id: foreign_key
+                  name: text
+                  isactive: boolean
+                  username: string
+                  password: text
+                  dateofbirth: datetime
+                  email: string
+                message: {}
+  "/health":
+    get:
+      summary: System Health
+      tags:
+      - system
+      responses:
+        '200':
+          description: index
+          content:
+            application/json:
+              example: {}
+servers:
+- url: "{defaultHost}"
+  variables:
+    defaultHost:
+      default: ''
+components:
+  securitySchemes:
+    bearerAuth:
+      name: Authorization
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

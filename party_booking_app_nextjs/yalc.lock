@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "@jitera/jitera-web-ui-library": {
+      "signature": "67065a5171c4487572e177cd8a9839a0",
+      "file": true
+    }
+  }
+}

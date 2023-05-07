@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "liferay-npm-bundler": "^2.31.2",
+    "parcel-bundler": "^1.12.5",
+    "postgres": "^3.3.4",
+    "ruby": "^0.6.1",
+    "yarn": "^1.22.19"
+  }
+}
